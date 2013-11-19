@@ -10,9 +10,7 @@
     {% endif %}
 </head>
 <body>
-    <h1>Hello, {{user.nickname}}</h1>
-    {% for post in posts %}
-    <p>{{post.author.nickname}} says: {{post.body}}</p>
-    {% endfor %}
+    <div>Microblog: <a href="/index">Home</a></div>
+    {% block content %} {% endblock %}
 </body>
 </html>
