@@ -1,18 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 5//EN"
-    "http://www.w3.org/TR/html5/html5.dtd"
-    >
-<html lang="en">
-<head>
-    {% if title %}
-        <title>{{title}} - microblog</title>
-    {% else %}
-        <title>Welcome to my microblog</title>
-    {% endif %}
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
     <h1>Hello, {{user.nickname}}</h1>
     {% for post in posts %}
     <p>{{post.author.nickname}} says: {{post.body}}</p>
     {% endfor %}
-</body>
-</html>
+{% endblock %}
