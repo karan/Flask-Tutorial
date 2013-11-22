@@ -16,6 +16,6 @@ OPENID_PROVIDERS = [
 
 
 # required by flask, path to the database file
-SQLACHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 # folder to store migrate data files
-SQLACHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
+SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
