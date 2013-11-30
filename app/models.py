@@ -15,6 +15,13 @@ class User(db.Model):
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime)
+    followed = db.relationship('User',
+                               secondary = (followers.c.follower_id == id),
+                               primaryjoin = (followers.c.followed_id == id),
+                               secondaryjoin = (followers.c.followed_id == id),
+                               backred = db.backref('followers', lazy='dynamix'),
+                               lazy = 'dynamic'
+                               )
     
     @staticmethod
     def make_unique_nickname(nickname):
@@ -54,3 +61,8 @@ class Post(db.Model):
     
     def __repr__(self):
         return '<Post %r>' % (self.body)
+
+followers = db.Table('followers',
+                     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
+                     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
+                     )
