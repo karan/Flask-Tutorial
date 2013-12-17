@@ -22,7 +22,7 @@ class EditForm(Form):
         if not Form.validate(self):
             return False
         if self.nickname.data == self.original_nickname:
-            return true
+            return True
         user = User.query.filter_by(nickname=self.nickname.data).first()
         if user != None:
             self.nickname.errors.append('This nickname is already in use. Please choose another one.')
